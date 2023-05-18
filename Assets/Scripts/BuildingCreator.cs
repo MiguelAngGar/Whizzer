@@ -1,14 +1,17 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 public class BuildingCreator : Singleton<BuildingCreator>
 {
     [SerializeField] Tilemap previewMap;
+    [SerializeField] Tilemap defaultMap;
 
     PlayerInput playerInput;
-
+    bool isDragging = false;
     Vector2 mousePos;
 
     TileBase tileBase;
@@ -31,6 +34,8 @@ public class BuildingCreator : Singleton<BuildingCreator>
         playerInput.Enable();
         playerInput.Editor.Position.performed += OnMouseMove;
         playerInput.Editor.Click.performed += OnClick;
+        playerInput.Editor.Click.started += OnDragStarted;
+        playerInput.Editor.Click.canceled += OnDragCancelled;
     }
 
     private void OnDisable()
@@ -38,16 +43,34 @@ public class BuildingCreator : Singleton<BuildingCreator>
         playerInput.Disable();
         playerInput.Editor.Position.performed -= OnMouseMove;
         playerInput.Editor.Click.performed -= OnClick;
+        playerInput.Editor.Click.started -= OnDragStarted;
+        playerInput.Editor.Click.canceled -= OnDragCancelled;
+    }
+
+    private void OnDragStarted(InputAction.CallbackContext ctx)
+    {
+        isDragging = true;
+    }
+    private void OnDragCancelled(InputAction.CallbackContext ctx)
+    {
+        isDragging = false;
     }
 
     private void OnMouseMove(InputAction.CallbackContext ctx)
     {
         mousePos = ctx.ReadValue<Vector2>();
+
+        if (isDragging)
+        {
+            if (selectedObj != null && !EventSystem.current.IsPointerOverGameObject())
+                HandleDrawing();
+        }
     }
 
     private void OnClick(InputAction.CallbackContext ctx)
     {
-
+        if (selectedObj != null && !EventSystem.current.IsPointerOverGameObject())
+            HandleDrawing();
     }
 
     private BuildingObjectBase SelectedObj
@@ -60,7 +83,7 @@ public class BuildingCreator : Singleton<BuildingCreator>
         }
     }
 
-    public void ObjectSelected (BuildingObjectBase obj)
+    public void ObjectSelected(BuildingObjectBase obj)
     {
         SelectedObj = obj;
 
@@ -91,5 +114,15 @@ public class BuildingCreator : Singleton<BuildingCreator>
     {
         previewMap.SetTile(lastGridPosition, null);
         previewMap.SetTile(currentGridPosition, tileBase);
+    }
+
+    private void HandleDrawing()
+    {
+        DrawItem();
+    }
+
+    private void DrawItem()
+    {
+        defaultMap.SetTile(currentGridPosition, tileBase);
     }
 }

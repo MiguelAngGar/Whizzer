@@ -235,7 +235,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 580617121}
   - component: {fileID: 580617120}
   m_Layer: 0
-  m_Name: Default
+  m_Name: DefaultMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,6 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previewMap: {fileID: 126523996}
+  defaultMap: {fileID: 580617121}
 --- !u!4 &1349000167
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,8 +1019,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 768.8122, y: 108.36565}
-  m_SizeDelta: {x: 382.3808, y: 875.6538}
+  m_AnchoredPosition: {x: 768.81, y: -36.369}
+  m_SizeDelta: {x: 382.38, y: 896.297}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1404940900
 GameObject:
