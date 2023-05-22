@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7c8ca5a51e357643bfe44e11d9f0939, type: 3}
-  m_Name: PurpleWall
+  m_Name: PurpleGround
   m_EditorClassIdentifier: 
-  category: 0
-  tileBase: {fileID: 11400000, guid: 17678c858a8da5548b13e4b35ecbbcf4, type: 2}
+  uiCategory: {fileID: 11400000, guid: dcc1e93f2721a1d43a248bd39d72ab72, type: 2}
+  category: 1
+  tileBase: {fileID: 11400000, guid: 2dd68d7aa93d1b544bea42fcbdeb20f0, type: 2}

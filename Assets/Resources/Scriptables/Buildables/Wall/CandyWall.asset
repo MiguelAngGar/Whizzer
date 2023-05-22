@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7c8ca5a51e357643bfe44e11d9f0939, type: 3}
-  m_Name: PurpleGround
+  m_Name: CandyWall
   m_EditorClassIdentifier: 
-  category: 1
-  tileBase: {fileID: 11400000, guid: 2dd68d7aa93d1b544bea42fcbdeb20f0, type: 2}
+  uiCategory: {fileID: 11400000, guid: 38fde28c392ea1441a57beec8dbbc984, type: 2}
+  category: 0
+  tileBase: {fileID: 11400000, guid: 581021c5ab4ecf94b99705b18d196f0e, type: 2}
