@@ -6,7 +6,8 @@ using UnityEngine.Tilemaps;
 public enum Category
 {
     Wall,
-    Floor
+    Floor,
+    Tool
 }
 
 [CreateAssetMenu(fileName = "Buildable", menuName = "BuildingObjects/Create Buildable")]

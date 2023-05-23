@@ -123,6 +123,15 @@ public class BuildingCreator : Singleton<BuildingCreator>
 
     private void DrawItem()
     {
-        defaultMap.SetTile(currentGridPosition, tileBase);
+
+        if (selectedObj.GetType() == typeof(BuildingTool)) {
+            BuildingTool tool = (BuildingTool)selectedObj;
+
+            tool.Use(currentGridPosition);
+        } else
+        {
+            defaultMap.SetTile(currentGridPosition, tileBase);
+        }
+
     }
 }
